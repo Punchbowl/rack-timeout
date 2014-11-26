@@ -18,11 +18,6 @@ module Rack
 
     def call(env)
       SystemTimer.timeout(self.class.timeout, RequestTimeoutError) { @app.call(env) }
-    rescue RequestTimeoutError => e
-      path = env["PATH_INFO"]
-      qs   = env["QUERY_STRING"] and path = "#{path}?#{qs}"
-      Rails.logger.warn "!!!! REQUEST TIMEOUT (#{self.class.timeout}s) :: #{path}"
-      raise e
     end
 
   end
