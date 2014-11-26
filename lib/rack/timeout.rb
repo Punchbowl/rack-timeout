@@ -4,7 +4,7 @@ SystemTimer ||= Timeout
 module Rack
   class Timeout
 
-    class RequestTimeoutError < RuntimeError;
+    class RequestTimeoutError < RuntimeError; end
 
     @timeout = 15
     
